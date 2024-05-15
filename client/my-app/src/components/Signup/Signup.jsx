@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "./Signup.css";
-//import Headingcomp from "./Headingcomp";
+import Headingcomp from "./Headingcomp";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 const Signup = () => {
@@ -67,7 +67,9 @@ const Signup = () => {
                     <button className="btn-signup p-2" onClick={submit}>Sign up</button>
                     </div>
                 </div>
-              
+                <div className="col-lg-4 column col-left d-flex justify-content-center align-items-center ">
+                    <Headingcomp first="sign" second="up"/>
+                 </div>
             </div>
         </div>
     </div>

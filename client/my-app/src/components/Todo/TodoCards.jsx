@@ -1,7 +1,7 @@
 import React from "react";
 import { MdDelete } from "react-icons/md";
 import {GrDocumentUpdate} from "react-icons/gr";
-const Todocards=({title,body,id,delid,display}) =>{
+const Todocards=({title,body,id,delid,display,toBeUpdateId,updateId,}) =>{
 return (
 <div className="p-3 todo-card">
     <div>
@@ -13,7 +13,9 @@ return (
         }}>
             <MdDelete className="card-icons del"/>delete
         </div>
-        <div className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1 text-danger" onClick = {()=>{ display("block");}}/>
+        <div className="d-flex justify-content-center align-items-center card-icon-head px-2 py-1 text-danger" onClick = {()=>{ display("block");
+            toBeUpdateId(updateId);
+        }}/>
             <GrDocumentUpdate className="card-icons"/>{" "}update
         </div>
     </div>

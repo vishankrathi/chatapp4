@@ -1,8 +1,19 @@
 import React from "react";
 import "./Navbar.css";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store';
 const Navbar = () =>{
-    return<div>
+  const dispatch = useDispatch()
+  const isLoggedin = useSelector((state) => state.isLoggedin);
+  const logout = () => {
+    dispatch(authActions.logout());
+    sessionStorage.removeItem("id");
+    window.location.reload();
+  }
+  console.log(isLoggedin);
+    return(<div>
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <Link className="navbar-brand" to="/">
     <b>todo</b>
@@ -21,15 +32,16 @@ const Navbar = () =>{
       <li className="nav-item ">
         <Link className="nav-link active " to="/Todo">todo <span className="sr-only">(current)</span></Link>
       </li>
-      <li className="nav-item ">
-        <Link className="nav-link active btn-nav" to="/Signup">signUp<span className="sr-only">(current)</span></Link>
+      {!isLoggedin && (<>  <li className="nav-item ">
+        <Link className="nav-link active btn-nav" to="/Signup">signUp</Link>
       </li>
       <li className="nav-item ">
-        <Link className="nav-link active btn-nav" to="/Signin">Signin <span className="sr-only">(current)</span></Link>
-      </li>
-      <li className="nav-item ">
-        <Link className="nav-link active btn-nav" to="#">Logout<span className="sr-only">(current)</span></Link>
-      </li>
+        <Link className="nav-link active btn-nav" to="/Signin">Signin</Link>
+      </li></>)}
+        { isLoggedin && (<li className="nav-item "onClick={logout}>
+         <Link className="nav-link active btn-nav" to="#">Logout</Link>
+       </li>)}
+      
       <li className="nav-item ">
         <Link className="nav-link active" to="#">
           <img className="img-fluid user-png" src="https://www.nicepng.com/png/full/128-1280406_user-icon-png.png"></img>
@@ -39,5 +51,6 @@ const Navbar = () =>{
   </div>
 </nav>
 </div>
+    )
 }
 export default Navbar;
