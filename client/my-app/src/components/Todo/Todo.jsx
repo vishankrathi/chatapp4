@@ -2,7 +2,7 @@ import React  ,{useEffect,useState}from 'react';
 import TodoCards from "./TodoCards";
 import "./Todo.css";
 import Update from "./Update";
-import {useselector} from "react-redux";
+import {useSelector} from "react-redux";
 import {useDispatch} from "react-redux";
 import {authActions} from "../../store";  
 import { ToastContainer, toast } from 'react-toastify';

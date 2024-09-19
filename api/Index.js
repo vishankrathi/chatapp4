@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose=require('mongoose');
 const dotenv=require('dotenv');
-const User=require('./models/user');
+const User=require('./models/User');
 const jwt=require('jsonwebtoken');
 const cors=require('cors');
 const cookieParser=require('cookie-parser');
